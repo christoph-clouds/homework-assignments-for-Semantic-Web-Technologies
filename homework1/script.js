@@ -1,24 +1,19 @@
 let fs = require("fs");
-var pluralize = require('pluralize')
+const pluralize = require('pluralize')
+const readline = require('readline');
 
 
+let dictionary = new Array();
 
-let files = [];
+fs.readdirSync('textfiles').forEach(file => {
+    processFile(file);
+})
 
-for(let i = 1; i <= 3; i++){
-    let content = processFile(i);
-    files.push(content);
-}
-
-let vocabulary = 
-
-
-console.log (files);
-
+console.log(dictionary);
 
 
 function readfile (filename) {
-    return fs.readFileSync(`textfiles/${filename}.txt`, 'utf8');
+    return fs.readFileSync(`textfiles/${filename}`, 'utf8');
 }
 
 function processFile(filename) {
@@ -29,10 +24,13 @@ function processFile(filename) {
         words[j] = pluralize.singular(words[j])
     }
 
-    let file = {
+
+
+
+    let entry = {
         name: filename,
         contents: words
     }
-    return file;
+    dictionary.push(entry);
 }
 

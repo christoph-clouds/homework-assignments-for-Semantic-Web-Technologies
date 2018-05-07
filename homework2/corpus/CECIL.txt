@@ -1,0 +1,1 @@
+Cecil is a prototype-based programming language.
