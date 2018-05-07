@@ -42,7 +42,9 @@ function createConsole(){
                     if(!results.has(key)){  //if the file is not yet in results do this
                         let score = new Map();
 
-                        let tfidfScore = value * (totalFiles / results.size);
+
+
+                        let tfidfScore = value * (totalFiles / dictionary.get(word).size);
 
                         score.set(word, tfidfScore);
 
@@ -53,7 +55,7 @@ function createConsole(){
                     else if(results.has(key)){ //if the file is already in results do this
                         let score = results.get(key);
 
-                        let tfidfScore = value * (totalFiles / results.size);
+                        let tfidfScore = value * (totalFiles / dictionary.get(word).size);
 
                         let totalScore = score.get(1) + tfidfScore;
 
